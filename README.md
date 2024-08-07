@@ -1,11 +1,54 @@
 advlib-ble-gatt
 ===============
 
-Wireless advertising packet decoding library for Bluetooth Low Energy GATT data.  __advlib-ble-gatt__ is typically used as a library for [advlib-ble](https://github.com/reelyactive/advlib-ble) which itself is commonly a processor module of the protocol-agnostic [advlib](https://github.com/reelyactive/advlib).
+Wireless packet decoding library for Bluetooth Low Energy GATT data.  __advlib-ble-gatt__ is typically used as a library for [advlib-ble](https://github.com/reelyactive/advlib-ble) which itself is commonly a processor module of the protocol-agnostic [advlib](https://github.com/reelyactive/advlib).
 
 ![Overview of advlib-ble-gatt](https://reelyactive.github.io/advlib-ble-gatt/images/overview.png)
 
 __advlib-ble-gatt__ is a lightweight [Node.js package](https://www.npmjs.com/package/advlib-ble-gatt) with no dependencies.
+
+
+Installation
+------------
+
+    npm install advlib-ble-gatt
+
+
+Hello advlib-ble-gatt!
+----------------------
+
+```javascript
+const advlib = require('advlib-ble-gatt');
+
+let protocolSpecificData = {
+  gatt: [ { serviceUuid: "1c930003d45911e79296b8e856369374",
+            characteristicUuid: "1c930038d45911e79296b8e856369374",
+            value: "480d" },
+          { serviceUuid: "1c930003d45911e79296b8e856369374",
+            characteristicUuid: "1c930032d45911e79296b8e856369374",
+            value: "c019" } ]
+};
+
+let processedData = advlib.processProtocolSpecificData(protocolSpecificData);
+
+console.log(processedData);
+```
+
+Which should yield the following console output:
+
+    { batteryVoltage: 3.4, temperature: 25.75 }
+
+The __advlib-ble-gatt__ library observes [these standard properties](https://github.com/reelyactive/advlib#standard-properties).
+
+
+Supported Services
+------------------
+
+The following services, in order of their UUID, are supported by __advlib-ble-gatt__.
+
+| Service UUID(s)                      | /lib file |
+|:-------------------------------------|:----------|
+| 1c93xxxx-d459-11e7-9296-b8e856369374 | bluvib.js |
 
 
 Contributing
