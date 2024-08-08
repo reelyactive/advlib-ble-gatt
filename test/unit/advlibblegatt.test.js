@@ -62,10 +62,10 @@ const EXPECTED_DATA_VALID_BLUVIB = {
   operatingMode: 'Wakeup',
   temperature: 18.90625,
   batteryVoltage: 3.476,
-  sampleRate: 25600,
-  numberOfSamples: 64,
   calibration: 7812,
-  accelerationTimeseries: [
+  numberOfSamples: 64,
+  accelerationSamplingRate: 25600,
+  accelerationTimeSeries: [
     [
       0.8750560035842293, 0.8872638161342326,  0.874079378580229,
       0.8657780660462269, 0.8794508161022304, 0.8755443160862294,
